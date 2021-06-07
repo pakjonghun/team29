@@ -1,0 +1,63 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input {
+    margin-bottom: 1em;
+}
+
+input {
+    padding: .7em 2em;
+}
+
+input[type="submit"] {
+    background-color: lightblue;
+    border: 1px solid transparent;
+    border-radius: .5rem;
+}
+
+input[type="submit"]:hover, button:focus {
+    opacity: .9;
+}
+
+input[type="submit"]:active {
+    opacity: .8;
+    border: 1px solid lightskyblue;
+}
+
+form input {
+    border: 1px solid gray;
+    border-radius: .2rem;
+}
+
+form input:focus {
+    outline: none;
+    border: 1px solid black;
+}
+
+button {
+    margin-left: .5em;
+    border-radius: 0.2rem;
+    padding: .5em 1em;
+    border: none;
+    background-color: lightblue;
+    border: 1px solid transparent;
+}
+
+button:active {
+    background-color: lightblue;
+    opacity: .8;
+
+}
+
+
+
