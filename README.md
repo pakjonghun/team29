@@ -10,3 +10,5 @@
 
 ### made by 이대성 박정훈 박민주 석상필
 
+## 설치 해야 하는 모듈 입니다.
+bs4, flask, requests, pymongo
