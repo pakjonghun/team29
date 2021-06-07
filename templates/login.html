@@ -21,7 +21,13 @@
                         alert(`${user.nickName}님 방문을 환영합니다.`);
                         window.location.href = "/main";
                     } else {
-                        alert(msg);
+                        if(err==="1"){
+                            alert("없는 닉네임 입니다.");
+                            $('#nickName').css("border","1px solid red");
+                        }else if(err==="2"){
+                            alert("비밀번호가 틀렸습니다.");
+                            $('#password').css("border","1px solid red");
+                        }
                     }
                 }
             })
@@ -51,7 +57,21 @@
     <button onclick="window.location.href='/user/join'">회원가입</button>
 </main>
 
+<script>
+    const id_input = document.querySelector('#nickName');
+    const pw_input = document.querySelector('#password');
+    const focus =(e)=>{
+        e.target.style.borderColor="black";
+    }
 
+    const blur = (e)=>{
+        e.target.style.borderColor="lightgray"
+    }
+    id_input.addEventListener("click",focus);
+    id_input.addEventListener("blur",blur);
+    pw_input.addEventListener("click",focus);
+    pw_input.addEventListener("blur",blur);
+</script>
 
 
 </body>

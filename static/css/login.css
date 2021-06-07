@@ -36,13 +36,12 @@ input[type="submit"]:active {
 }
 
 .form input {
-    border: 1px solid gray;
+    border: 1px solid lightgray;
     border-radius: .2rem;
 }
 
 .form input:focus {
     outline: none;
-    border: 1px solid black;
 }
 
 button {
