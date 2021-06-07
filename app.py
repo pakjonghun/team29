@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask, render_template, jsonify
 
 from pymongo import MongoClient
 import requests
@@ -25,9 +25,10 @@ def home():
 def home():
     return render_template("join.html")
 
-@app.route("/user/mypage")
-def home():
-    return render_template("mypage.html")
+@app.route("/user/mypage", methods=['GET'])
+def show_column():
+    columns = list(db.spartaWeb1.find({'like' : {'$gt':0}}, {'_id': False}))
+    return jsonify({'my_columns' : columns})
 
 
 

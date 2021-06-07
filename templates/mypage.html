@@ -7,33 +7,81 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"/>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <style>
         .wrap {
             padding-top: 40px;
         }
+
     </style>
 
     <script>
+        $(document).ready(function () {
+            showLikeColumn();
+        });
+
+        function showLikeColumn() {
+            $.ajax({
+                type: 'GET',
+                url: '/user/mypage',
+                data: {},
+                success: function (response) {
+                    let mycolumns = response['my_columns']
+                    for (let i = 0; i < mycolumns.length; i++) {
+                        let title = mycolumns[i]['title']
+                        let desc = mycolumns[i]['desc']
+                        let like = mycolumns[i]['like']
+                        let img = mycolumns[i]['img']
+                        let tag = mycolumns[i]['tag']
+
+                        let temp_html = ``
+
+                    }
+                }
+            });
+        }
     </script>
 </head>
-<!--#themecast > div.theme_cont > div:nth-child(1) > div > ul > li:nth-child(1)-->
-<!--#themecast > div.theme_cont > div:nth-child(1) > div > ul > li:nth-child(2)-->
+
 <body>
-<div class="wrap">
-    <section class="hero is-warning">
-        <div class="hero-body">
-            <div class="container center">
-                <h1 class="title">
-                    내가 좋아요 누른 글
-                </h1>
+    <div class="card" id="user-like">
+        <div class="card-content">
+            <div class="media">
+                <div class="media-left">
+                    <figure class="image is-120x120">
+                        <img
+                                src="${image_url}"
+                                alt="Placeholder image"
+                        />
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <a href="${url}" target="_blank" class="star-name title is-4">title</a>
+                    <p class="subtitle is-6">${recent}</p>
+                </div>
             </div>
         </div>
-    </section>
-    <div id="user-like">
-
     </div>
-</div>
 </body>
 
 </html>
+
+<!--<li class="theme_item" data-gdid="e90453f2-626c-4780-970a-a622e10321ac" data-da-position="true">-->
+<!--    <a href="https://post.naver.com/viewer/postView.nhn?volumeNo=31605071&amp;memberNo=1972782" class="theme_thumb"-->
+<!--       data-clk="tcc_bty.list1cont1" target="_blank">-->
+<!--        <img src="https://s.pstatic.net/dthumb.phinf/?src=%22https%3A%2F%2Fs.pstatic.net%2Fshop.phinf%2F20210602_91%2F1622620377576DaY9r_JPEG%2F4.jpg%3Ftype%3Df342_264%22&amp;type=nf340_228"-->
+<!--             alt="스타들이 착용한 제품 찾아왔어" width="170" height="114" loading="lazy">-->
+<!--        <span class="thumb_bd"></span>-->
+<!--    </a>-->
+<!--    <a href="https://post.naver.com/viewer/postView.nhn?volumeNo=31605071&amp;memberNo=1972782" class="theme_info"-->
+<!--       data-clk="tcc_bty.list1cont1" target="_blank">-->
+<!--        <em class="theme_category"> 패션뷰티</em>-->
+<!--        <strong class="title elss">스타들이 착용한 제품 찾아왔어</strong>-->
+<!--        <p class="desc">안녕하세요 톡톡입니다.!오늘은 올 여름 뮬 슬리퍼 쇼핑 고민중이신 분들을 위한 컨텐츠 가지고왔습니다! 요즘 셀럽들의 데일리룩에 빠지지않고 등장하는 잇 아이템 "뮬-->
+<!--            슬리퍼"얼마전 블랙핑크 지수는 데님 팬츠에 블랙 컬러의 슬라이드를 매치해 여친룩의 정석을 보여주기도 했죠 ?지수가 착용한 닥터마틴 라이커 슬라이드 로 캐주얼룩은 물론 포멀룩에 믹</p>-->
+<!--        <div class="source_box">-->
+<!--        </div>-->
+<!--    </a>-->
+<!--</li>-->
