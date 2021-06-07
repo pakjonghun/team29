@@ -2,10 +2,119 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> </title>
+    <title>오늘 무엇을 읽을까? | 회원가입</title>
+    <link href="{{ url_for('static', filename='./css/login.css') }}" rel="stylesheet">
+    <script>
+        async function createAccount() {
+            const nickName = document.querySelector("#nickName").value;
+            const password = document.querySelector("#password").value;
+            const passwordConfirm = document.querySelector("#passwordConfirm").value;
+
+             if(nickName == "") {
+                alert('닉네임은 필수 값입니다.');
+                nickName.focus();
+                return;
+            }
+
+            if(password == "") {
+                alert('비밀번호는 필수 값입니다.');
+                password.focus();
+                return;
+            }
+            if (password !== passwordConfirm) {
+                alert('비밀번호가 일치 하지 않습니다.');
+                 passwordConfirm.focus();
+                return;
+            }
+            const formData = new FormData();
+            formData.append('nickName', nickName);
+            formData.append('password', password);
+            try {
+                await fetch('/user/join', {
+                    method: 'POST',
+                    body: formData,
+                }).then(alert('회원가입되었습니다.'));
+                window.location.href = '/';
+            } catch (error) {
+                console.error(error);
+            }
+
+        }
+
+        async function isDup(value) {
+             const nickName = document.querySelector("#nickName");
+            if (value === "") {
+                nickName.focus();
+                return;
+            }
+            if(!is_nickname(value)) {
+
+                alert("아이디의 형식을 확인해주세요. 영문과 숫자, 일부 특수문자(._-) 사용 가능. 2-10자 길이");
+                nickName.focus();
+                return;
+            }
+            try {
+                let url = '/user/dupCheck?nickName=' + value
+                const response = await (await fetch(url, {
+                    method: 'GET',
+                })).json();
+                if (!response.result) {
+                    alert("중복되는 아이디입니다.");
+                    nickName.focus();
+                    return;
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        function isValidPassword(value) {
+            const password = document.querySelector("#password");
+            if(!is_password(value)) {
+                alert("비밀번호의 형식을 확인해주세요. 영문과 숫자 필수 포함, 특수문자(!@#$%^&*) 사용가능 8-20자");
+                password.focus();
+                return;
+            }
+        }
+
+        function isValidPasswordConfirm(value) {
+             const passwordConfirm = document.querySelector("#passwordConfirm");
+             if(!is_password(value)) {
+                alert("비밀번호확인의 형식을 확인해주세요. 영문과 숫자 필수 포함, 특수문자(!@#$%^&*) 사용가능 8-20자");
+                passwordConfirm.focus();
+                return;
+            }
+        }
+
+        function is_nickname(asValue) {
+            let regExp = /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{2,10}$/;
+            return regExp.test(asValue);
+        }
+
+        function is_password(asValue) {
+            let regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z!@#$%^&*]{8,20}$/;
+            return regExp.test(asValue);
+        }
+    </script>
 </head>
 <body>
-<h1> </h1>
-<h3> </h3>
+<div class="header">
+    <h1>방문을 환영합니다</h1>
+</div>
+<main class="login">
+    <h3>회원가입</h3>
+    <form>
+        <input type="text" placeholder="NickName" name="nickName" id="nickName" onchange="isDup(value)" required>
+        <input type="password" placeholder="Password" name="password" id="password" onchange="isValidPassword(value)" required>
+        <input type="password" placeholder="PasswordConfirm" name="passwordConfirm" id="passwordConfirm" onchange="isValidPasswordConfirm(value)" required>
+        <input type="button" onclick="createAccount()" value="회원가입">
+    </form>
+</main>
+
+<footer>
+    <a href="/">계정이 이미 있으신가요?</a>
+</footer>
+
+
 </body>
 </html>
