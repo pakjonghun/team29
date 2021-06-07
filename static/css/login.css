@@ -1,4 +1,5 @@
 body {
+    background-color: #f5f6fa;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,10 +23,10 @@ input {
 input[type="submit"] {
     background-color: lightblue;
     border: 1px solid transparent;
-    border-radius: .5rem;
+    border-radius: .2rem;
 }
 
-input[type="submit"]:hover, button:focus {
+input[type="submit"]:hover {
     opacity: .9;
 }
 
@@ -53,11 +54,16 @@ button {
     border: 1px solid transparent;
 }
 
-button:active {
-    background-color: lightblue;
-    opacity: .8;
 
+
+
+button:hover{
+    opacity: .9;
 }
 
+button:active {
+    opacity:.8;
+
+}
 
 
