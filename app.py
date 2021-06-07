@@ -55,7 +55,7 @@ def postLogin():
     token = jwt.encode(payload, 'secret_key', algorithm='HS256')
     return jsonify({'token':token,'user':isUserExist,'ok':True})
 
-@app.route("/join")
+@app.route("/user/join")
 def join():
     return render_template("join.html")
 

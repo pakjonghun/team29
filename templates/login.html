@@ -14,13 +14,13 @@
             $.ajax({
                 type: "post",
                 url: "/user/login",
-                data: {nickName,password},
+                data: {nickName, password},
                 success: function (response) {
-                    const {ok=null,err=null,msg=null,user=null}=response;
-                    if(ok){
+                    const {ok = null, err = null, msg = null, user = null} = response;
+                    if (ok) {
                         alert(`${user.nickName}님 방문을 환영합니다.`);
-                        window.location.href="/main";
-                    }else{
+                        window.location.href = "/main";
+                    } else {
                         alert(msg);
                     }
                 }
@@ -32,23 +32,26 @@
 </head>
 <body>
 <div class="header">
-    <h1>방문을 환영합니다</h1>
+        <img src="https://picsum.photos/seed/picsum/200/300" alt="" >
+        <img src="https://picsum.photos/200/300?grayscale" alt="">
+        <img src="https://picsum.photos/200/300/?blur" alt="">
+
 </div>
+<h1 class="title">`오늘은 무엇을 읽을까?` 에 오신것을 환영합니다.</h1>
+<h1 class="warning"> 화면이 좁습니다. 넓혀주세요.</h1>
 <main class="login">
     <h3>로그인 하세요</h3>
-<!--    <form method="POST" action="/">-->
+
     <div class="form">
         <input type="text" placeholder="닉네임" required id="nickName">
         <input type="password" placeholder="비밀번호" required id="password">
         <button onclick="login()" class="login_btn">로그인</button>
-<!--    </form>-->
     </div>
+    <span>계정이 없으신가요?</span>
+    <button onclick="window.location.href='/user/join'">회원가입</button>
 </main>
 
-<footer>
-    계정이 없으신가?
-    <button>회원가입</button>
-</footer>
+
 
 
 </body>
