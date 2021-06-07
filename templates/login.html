@@ -16,8 +16,9 @@
                 url: "/user/login",
                 data: {nickName, password},
                 success: function (response) {
-                    const {ok = null, err = null, msg = null, user = null} = response;
+                    const {ok = null, err = null, user = null,token=null} = response;
                     if (ok) {
+                        $.cookie('mytoken', response['token']);
                         alert(`${user.nickName}님 방문을 환영합니다.`);
                         window.location.href = "/main";
                     } else {
