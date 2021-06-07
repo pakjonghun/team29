@@ -14,19 +14,19 @@ data = requests.get('https://movie.naver.com/movie/sdb/rank/rmovie.nhn?sel=pnt&d
 soup = BeautifulSoup(data.text, 'html.parser')
 
 @app.route("/main")
-def home():
+def main():
     return render_template("main.html")
 
-@app.route("/login")
-def home():
+@app.route("/")
+def login():
     return render_template("login.html")
 
 @app.route("/join")
-def home():
+def join():
     return render_template("join.html")
 
 @app.route("/user/mypage")
-def home():
+def myPage():
     return render_template("mypage.html")
 
 
