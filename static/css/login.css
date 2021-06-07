@@ -1,0 +1,100 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input {
+
+    margin-bottom: 1em;
+}
+
+input {
+    padding: .7em 2em;
+}
+
+form input:nth-child(1){
+    margin: 0;
+}
+
+input[type="submit"] {
+    background-color: lightblue;
+    border: 1px solid transparent;
+    border-radius: .5rem;
+}
+
+input[type="submit"]:hover, button:focus {
+    opacity: .9;
+}
+
+input[type="submit"]:active {
+    opacity: .8;
+    border: 1px solid lightskyblue;
+}
+
+.input_box{
+    position: relative;
+}
+
+
+form input {
+    border: 1px solid gray;
+    border-radius: .2rem;
+
+}
+
+form input:focus {
+    outline: none;
+    border: 1px solid black;
+}
+
+button {
+    margin-left: .5em;
+    border-radius: 0.2rem;
+    padding: .5em 1em;
+    border: none;
+    background-color: lightblue;
+    border: 1px solid transparent;
+}
+
+button:active {
+    background-color: lightblue;
+    opacity: .8;
+
+}
+
+.confirm_btn{
+    margin:0;
+}
+
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.confirm_btn{
+    position: absolute;
+    right:0;
+    height:100%;
+    border: 1px solid gray;
+}
+
+
+.input_box{
+    margin-bottom: 1em;
+}
+
+form input:not(:last-child){
+    margin: 0;
+}
+
+
+

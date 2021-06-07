@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>오늘 무엇을 읽을까? | 로그인</title>
+    <link href="{{ url_for('static', filename='./css/login.css') }}" rel="stylesheet">
+
 </head>
 <body>
 <div class="header">
@@ -11,17 +13,21 @@
 <main class="login">
     <h3>로그인 하세요</h3>
     <form method="POST">
-        <input type="text" placeholder="닉네임" required>
-        <input type="password" placeholder="비밀번호" required>
+        <div class="input_box">
+            <input class="id_input" type="text" placeholder="닉네임" required/>
+            <button class="confirm_btn">중복확인</button>
+        </div>
+        <div class="input_box">
+            <input type="password" placeholder="비밀번호" required>
+        </div>
         <input type="submit" value="로그인">
     </form>
 </main>
 
 <footer>
-    계정이 없으신가? <button>회원가입</button>
+    계정이 없으신가?
+    <button>회원가입</button>
 </footer>
-
-
 
 
 </body>
