@@ -7,12 +7,12 @@ body {
     height: 100vh;
 }
 
-form {
+.form {
     display: flex;
     flex-direction: column;
 }
 
-form input {
+.form input {
     margin-bottom: 1em;
 }
 
@@ -35,12 +35,12 @@ input[type="submit"]:active {
     border: 1px solid lightskyblue;
 }
 
-form input {
+.form input {
     border: 1px solid gray;
     border-radius: .2rem;
 }
 
-form input:focus {
+.form input:focus {
     outline: none;
     border: 1px solid black;
 }
@@ -66,4 +66,6 @@ button:active {
 
 }
 
-
+.login_btn{
+    margin-bottom: 1em;
+}
