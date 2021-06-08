@@ -14,6 +14,10 @@
 bs4, flask, requests, pymongo
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 test
 >>>>>>> d66c2b9 (test_minju)
+=======
+test
+>>>>>>> 9687d444f5160441618253799984b489ed84cc67

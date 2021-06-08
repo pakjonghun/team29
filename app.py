@@ -2,10 +2,18 @@ from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
 from bs4 import BeautifulSoup
 import requests
+<<<<<<< HEAD
 
 client = MongoClient('localhost', 27017)
 app = Flask(__name__)
 db = client.spartaWeb
+=======
+
+
+client = MongoClient('localhost', 27017)
+app = Flask(__name__)
+db = client.sparataWeb
+>>>>>>> 9687d444f5160441618253799984b489ed84cc67
 
 
 @app.route("/")
