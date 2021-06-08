@@ -19,9 +19,39 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
           integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
           crossorigin="anonymous"></script>
-
+  <!--  google font-->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+  <title>오늘 읽을 만한 글 | MyPage</title>
+
+  <script type="text/javascript">
+
+      $(document).ready(function () {
+          showNews();
+      });
+
+      function showNews() {
+          $.ajax({
+              type: "GET",
+              url: "/main",
+              data: {},
+              success: function (response) {
+                  let articles = response['all_articles']
+                  for (let i = 0; i <articles.length; i++) {
+                      let theme_category = articles[i]['theme_category']
+                      let content = articles[i]['content']
+                      let title = articles[i]['title']
+                      let source = articles[i]['source']
+                      let date = articles[i]['date']
+
+                      console.log(theme_category, content, title, source, date)
+                  }
+              }
+          })
+      }
+
+  </script>
 
   <style>
       * {
@@ -42,7 +72,7 @@
 
       }
 
-      .card-columns{
+      .card-columns {
 
       }
   </style>
@@ -59,25 +89,27 @@
     <!-- As a heading -->
     <nav class="navbar navbar-light bg-light">
       <span class="navbar-brand mb-0 h1">오늘 읽을만한 글</span>
+      <button type="button" class="btn btn-outline-info">Login</button>
     </nav>
   </div>
-  <div class="category">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">엔터</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="#">엔터</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="#">엔터</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="#">엔터</a>
-      </li>
+<!--  <div class="category">-->
+<!--    <ul class="nav nav-tabs">-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link active" href="#">엔터</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link active" href="#">엔터</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link active" href="#">엔터</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link active" href="#">엔터</a>-->
+<!--      </li>-->
 
-    </ul>
-  </div>
+<!--    </ul>-->
+<!--  </div>-->
+
   <div class="card-columns">
     <div class="card">
       <img class="card-img-top" src="..." alt="Card image cap">
@@ -135,6 +167,6 @@
     </div>
 
   </div>
+</div>
 </body>
-
 </html>
