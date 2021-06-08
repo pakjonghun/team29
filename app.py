@@ -7,7 +7,7 @@ import hashlib
 import datetime
 import jwt
 
-client = MongoClient('mongodb://127.0.0.1:27017', 27017)
+client = MongoClient('localhost', 27017)
 app = Flask(__name__)
 db = client.sparataWeb1
 
@@ -30,13 +30,12 @@ def login():
 def postLogin():
     nickName = request.form['nickName']
     password = request.form['password']
-    print(nickName,password)
 
     # 비밀번호를 암호화 합니다.
     hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest();
 
     # 닉네임을 갖고있는 유저가 있는지 검색 합니다. 유저가 없으면 에러 메세지를 반환합니다.
-    isUserExist = db.user.find_one({'nickName':nickName})
+    isUserExist = db.user.find_one({'nickName':nickName},{'_id':False})
     if isUserExist is None:
         return jsonify({'ok':False,'err':'1'})
     else:
