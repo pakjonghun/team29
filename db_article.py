@@ -14,7 +14,7 @@ soup = BeautifulSoup(data.text, 'html.parser')
 
 lis = soup.select('#themecast > div.theme_cont > div:nth-child(1) > div > ul > li')
 
-db_article = []
+# db_article = []
 
 for li in lis:
     theme_category = li.select_one('a.theme_info > em').text
@@ -22,5 +22,17 @@ for li in lis:
     title = li.select_one('a.theme_info > strong').text
     source = li.select_one('a.theme_info > div > span.source > span').text
     date = li.select_one('a.theme_info > div > span.date').text
-    db_article = list[theme_category, content, title, source,date]
-    # print('success!', date)
+    # db_article = list[theme_category, content, title, source,date]
+    # print(title)
+
+    doc = {
+        'theme_category': theme_category,
+        'content': content,
+        'source': source,
+        'date': date,
+        'title':title
+    }
+
+    db.articles.insert_one(doc)
+    # print('완료!', date)
+
